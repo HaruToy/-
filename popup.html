@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            body{
+                width : 350px;
+                height : 450px;
+                margin : 0;
+            }
+
+
+            .card-box
+            {
+                width : 100%;
+                height : 100%;
+                overflow:hidden;
+            }
+
+
+
+
+            button
+            {
+                width : 300px;
+                height : 50px;
+                background-color: #00FF7F;
+                border : none;
+                box-shadow : 0 4px 16px rgba(0,255,127,0.3);
+                font-size : 20px;
+                font-weight : bold;
+                border-radius : 10px;
+                transition:0.5s;
+                z-index: 2;
+            }
+            button:hover
+            {
+                transform : scale(0.95);
+                background-color: rgba(0,255,127,0.9);
+                cursor : pointer;
+                box-shadow: 0 2px 2px rgba(0,255,127,0.6);
+            }
+
+
+            a{
+                font-size: 36px;
+                color:aquamarine;
+                text-decoration: none;
+                border:1px solid blue;
+            }
+            
+            p
+            {
+                font-size: 50px;
+                font-weight : bold;
+                position :absolute;
+                top : -38px; 
+                left : 36%;
+            }
+
+            /*
+            textarea{
+                width:100%;
+                font-size:1.2rem;
+                top : 50%;
+            }
+            #result{
+                font-size:3.5rem;
+                이 아래 내용은 body에서 script.js가는 거 바로 위에 있었다.
+                <textarea id ="user" rows="3"></textarea>
+            }*/
+        </style>
+
+    </head>
+    <body>
+        <div class="card-box">
+            <img src = "back.jpg" alt="supporter"> 
+            <p>CUT?</p>   
+            <button
+            style="width : 60px; height : 40px; background-color: white; position : absolute; top : 5%; left : 5%; box-shadow : 0 4px 16px rgba(255,255,255,0.3);">
+            rank</button>
+            <button
+            style="position : absolute; top : 20%; left : 10%;">date</button>
+            <button
+            style="position : absolute; top : 35%; left : 10%;">working progress</button>
+            <button
+            style="position : absolute; top : 50%; left : 10%;">uncleared working</button>
+            <button
+            style="position : absolute; top : 65%; left : 10%;">cleared working</button>
+            <button
+            style="width : 80px; height : 60px; background-color: white; position : absolute; top : 82%; left : 73%; box-shadow : 0 4px 16px rgba(255,255,255,0.4);">add <br>work</button>
+
+        </div>
+            <script src ="script.js"></script>
+            <div id="result"></div>
+        </div>
+    </body>
+
+
+</html>

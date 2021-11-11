@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset ="utf-8">
+        <style>
+             body{
+                width : 800px;
+                height : 200px;
+                margin : 0;
+                overflow: auto;
+            }
+            .title
+            {
+                width : 800px;
+                height : 50px;
+                background-color: silver;
+                font-size : 40px;
+                font-weight: bold;
+                z-index : 2;
+                text-align: center;
+                
+            }
+
+
+            .choosing_01
+            {
+                width : 200px;
+                height : 100px;
+                background-color: skyblue;
+                border : none;
+                font-size: 28px;
+                font-weight: bold;
+                z-index : 2;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(135,206,235,0.3);
+                transition: 0.3s;
+                margin-top : 25px;
+                margin-left: 100px;
+                margin-right:100px;
+                margin-bottom : 10px;
+                float : left;
+            }
+
+            .choosing_02
+            {
+                width : 200px;
+                height : 100px;
+                background-color: skyblue;
+                border : none;
+                font-size: 28px;
+                font-weight: bold;
+                z-index : 2;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(135,206,235,0.3);
+                transition: 0.3s;
+                margin-top : 25px;
+                margin-left: 100px;
+                margin-right:100px;
+                margin-bottom : 10px;
+                float : right;
+            }
+
+
+            .box_100
+            {
+                width : 100px;
+                height : 30px;
+                background-color: gray;
+                border : none;
+                font-weight: bold;
+                font-size: 15px;
+                z-index : 2;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(128,128,128,0.3);
+                transition: 0.3s;
+                margin-top : 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                float : right;
+                overflow: auto;
+            }
+            
+
+            .box_100:hover
+            {
+                transform : scale(0.95);
+                background-color: rgba(128,128,128,0.9);
+                cursor : pointer;
+                box-shadow: 0 2px 2px rgba(128,128,128,0.6);
+               
+            }
+           
+            .choosing_01:hover
+            {
+                transform : scale(0.95);
+                background-color: rgba(30,115,190,0.9);
+                cursor : pointer;
+                box-shadow: 0 2px 2px rgba(30,115,190,0.6);
+               
+            }
+            .choosing_02:hover
+            {
+                transform : scale(0.95);
+                background-color: rgba(30,115,190,0.9);
+                cursor : pointer;
+                box-shadow: 0 2px 2px rgba(30,115,190,0.6);
+               
+            }
+            
+           
+        </style>
+    </head>
+    <body>
+        <div class = "title">
+            해치웠나?
+        </div>
+        <div class = "box_001">
+            <a href = "insert_work.html">
+                <button class = "choosing_01">
+                    동영상 시청용
+                </button>
+            </a>
+        </div>
+
+        <div class = "box_002">
+            <a href = "insert_doc.html">
+                <button class = "choosing_02">
+                    문서 작업용
+                </button>
+            </a>
+        </div>
+
+        <div class = "box_05">
+            <a href="showup.html">
+            <button class = "box_100" style ="color:white;">
+                취소
+            </button>
+        </a>
+        </div>
+
+
+    </body>
+</html>

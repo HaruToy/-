@@ -1,99 +1,205 @@
 <!doctype html>
-<html>
+<html lang="ko">
     <head>
-        <style>
-            body{
-                width : 350px;
-                height : 450px;
-                margin : 0;
-            }
+    <meta charset ="euc-kr">
+    <title>Graph</title>
+</head>
+<body>
+    <style>
+        body
+        {
+            background-image: url('homepagebackground.jpg');
+            padding : 50px;
+        }
+
+        .graph_name
+        {
+            height : 40px;
+            font-size : 40Px;
+            font-weight : bold;
+            z-index : 2;
+            text-align : center;
+            margin: 0 0 70px;
+        }
+
+        .graph
+        {
+            width : 700px;
+            height : 40px; 
+            margin: 0 0 30px;
+            background:#ccc; 
+            border-radius: 40px;
+        }
+        .graph span
+        {
+            display : block;
+            padding : 0 10px;
+            height : 40px;
+            line-height : 40px;
+            text-align : right;
+            border-radius : 40px;
+            box-sizing : border-box;
+            color : white;
+           
+        }
+
+        .graph.stack1 span 
+        {
+            animation : stack1 2s 1;
+            background : violet;
+        }
+
+        .graph.stack2 span 
+        {
+            animation : stack2 2s 1;
+            background : skyblue;
+        }
+
+        .graph.stack3 span 
+        {
+            animation : stack3 2s 1;
+            background : orange;
+        }
+
+        .graph.stack4 span 
+        {
+            animation : stack4 2s 1;
+            background : darkseagreen;
+        }
+
+        .graph.stack5 span 
+        {
+            animation : stack5 2s 1;
+            background : gold;
+        }
+
+        .graph.stack6 span 
+        {
+            animation : stack6 2s 1;
+            background : lightseagreen;
+        }
+        .good
+        {
+            float : right;
+            text-align : center;
+            font-size : 15px;
+        }
 
 
-            .card-box
-            {
-                width : 100%;
-                height : 100%;
-                overflow:hidden;
-            }
+        @keyframes stack1{
+            0%{width : 0; color : rgba(255,255,255,0);}
+            40%{color : rgba(255,255,255,1);}
+            100%{width : 75%;}
+        }
+
+        @keyframes stack2{
+            0%{width : 0; color : rgba(255,255,255,0);}
+            40%{color : rgba(255,255,255,1);}
+            100%{width : 60%;}
+        }
+
+        @keyframes stack3{
+            0%{width : 0; color : rgba(255,255,255,0);}
+            40%{color : rgba(255,255,255,1);}
+            100%{width : 25%;}
+        }
+
+        @keyframes stack4{
+            0%{width : 0; color : rgba(255,255,255,0);}
+            40%{color : rgba(255,255,255,1);}
+            100%{width : 50%;}
+        }
+
+        @keyframes stack5{
+            0%{width : 0; color : rgba(255,255,255,0);}
+            40%{color : rgba(255,255,255,1);}
+            100%{width : 90%;}
+        }
+
+        @keyframes stack6{
+            0%{width : 0; color : rgba(255,255,255,0);}
+            40%{color : rgba(255,255,255,1);}
+            100%{width : 5%;}
+        }
+        
+    </style>
 
 
+    <div class = "graph_name">
+        «ÿƒ°ø¸≥™?
+    </div>
 
+    <div class = "good">
+        <table border = "1", cellpadding ="10", cellspacing = "20", width = "700">
+            <tr>
+                <th>ªˆ±Ú</th>
+                <th>æ˜π´ ∏Ò∑œ</th>
+                <th>¿¸√º Ω√∞£ (∫–)</th>
+                <th>≥≤¿∫ Ω√∞£ (∫–)</th>
+            </tr>
+            <tr>
+                <td width = "50" bgcolor="violet"></td>
+                <td width = "350">∏Æ¥™Ω∫ µøøµªÛ ∞≠¿«</td>
+                <td width = "150">60</td>
+                <td width = "150">45</td>
+            </tr>
+            <tr>
+                <td width = "50" bgcolor="skyblue"></td>
+                <td width = "350">HTML, CSS, JS øµªÛ Ω√√ª</td>
+                <td width = "150">120</td>
+                <td width = "150">72</td>
+            </tr>
+            <tr>
+                <td width = "50" bgcolor="orange"></td>
+                <td width = "350">DBøÕ JS ø¨∞·πÊπ˝ ∞¯∫Œ</td>
+                <td width = "150">240</td>
+                <td width = "150">60</td>
+            </tr>
+            <tr>
+                <td width = "50" bgcolor="darkseagreen"></td>
+                <td width = "350">server ¡¶¿€</td>
+                <td width = "150">170</td>
+                <td width = "150">85</td>
+            </tr>
+            <tr>
+                <td width = "50" bgcolor="gold"></td>
+                <td width = "350">ƒ∏Ω∫≈Ê ∫∏∞Ìº≠ ¿€º∫</td>
+                <td width = "150">180</td>
+                <td width = "150">162</td>
+            </tr>
+            <tr>
+                <td width = "50" bgcolor="lightseagreen"></td>
+                <td width = "350">¿·¿⁄±‚ ¿ß«— ≥Î∑° µË±‚</td>
+                <td width = "150">420</td>
+                <td width = "150">21</td>
+            </tr>
+        </table>
+    </div>
 
-            button
-            {
-                width : 300px;
-                height : 50px;
-                background-color: #00FF7F;
-                border : none;
-                box-shadow : 0 4px 16px rgba(0,255,127,0.3);
-                font-size : 20px;
-                font-weight : bold;
-                border-radius : 10px;
-                transition:0.5s;
-                z-index: 2;
-            }
-            button:hover
-            {
-                transform : scale(0.95);
-                background-color: rgba(0,255,127,0.9);
-                cursor : pointer;
-                box-shadow: 0 2px 2px rgba(0,255,127,0.6);
-            }
+    <div class = "graph stack1">
+        <span style = "width : 75%;">75%</span>
+    </div>
 
+    <div class = "graph stack2">
+        <span style = "width : 60%;">60%</span>
+    </div>
 
-            a{
-                font-size: 36px;
-                color:aquamarine;
-                text-decoration: none;
-                border:1px solid blue;
-            }
-            
-            p
-            {
-                font-size: 50px;
-                font-weight : bold;
-                position :absolute;
-                top : -38px; 
-                left : 36%;
-            }
+    <div class = "graph stack3">
+        <span style = "width : 25%;">25%</span>
+    </div>
 
-            /*
-            textarea{
-                width:100%;
-                font-size:1.2rem;
-                top : 50%;
-            }
-            #result{
-                font-size:3.5rem;
-                Ïù¥ ÏïÑÎûò ÎÇ¥Ïö©ÏùÄ bodyÏóêÏÑú script.jsÍ∞ÄÎäî Í±∞ Î∞îÎ°ú ÏúÑÏóê ÏûàÏóàÎã§.
-                <textarea id ="user" rows="3"></textarea>
-            }*/
-        </style>
+    <div class = "graph stack4">
+        <span style = "width : 50%;">50%</span>
+    </div>
 
-    </head>
-    <body>
-        <div class="card-box">
-            <img src = "back.jpg" alt="supporter"> 
-            <p>CUT?</p>   
-            <button
-            style="width : 60px; height : 40px; background-color: white; position : absolute; top : 5%; left : 5%; box-shadow : 0 4px 16px rgba(255,255,255,0.3);">
-            rank</button>
-            <button
-            style="position : absolute; top : 20%; left : 10%;">date</button>
-            <button
-            style="position : absolute; top : 35%; left : 10%;">working progress</button>
-            <button
-            style="position : absolute; top : 50%; left : 10%;">uncleared working</button>
-            <button
-            style="position : absolute; top : 65%; left : 10%;">cleared working</button>
-            <button
-            style="width : 80px; height : 60px; background-color: white; position : absolute; top : 82%; left : 73%; box-shadow : 0 4px 16px rgba(255,255,255,0.4);">add <br>work</button>
+    <div class = "graph stack5">
+        <span style = "width : 90%;">90%</span>
+    </div>
 
-        </div>
-            <script src ="script.js"></script>
-            <div id="result"></div>
-        </div>
-    </body>
-
+    <div class = "graph stack6">
+        <span style = "width : 5%;">5%</span>
+    </div>
+    
+</body>
 
 </html>

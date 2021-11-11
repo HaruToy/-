@@ -2,6 +2,9 @@
 <html lang="ko">
     <head>
         <meta charset ="utf-8">
+        <link rel="stylesheet" href="third-party/jquery-ui.css">
+        <link rel="stylesheet" href="third-party/jquery-ui.structure.css">
+        <link rel="stylesheet" href="third-party/jquery-ui.theme.css">
         <style>
              body{
                 width : 800px;
@@ -111,8 +114,8 @@
                 box-shadow: 0 4px 8px rgba(128,128,128,0.3);
                 transition: 0.3s;
                 margin-top : 10px;
-                margin-left: 220px;
-                margin-right: 220px;
+                margin-left: 350px;
+                margin-right: 350px;
                 margin-bottom: 10px;
                 overflow: auto;
             }
@@ -158,6 +161,42 @@
                
             }
 
+            .graph
+        {
+            width : 700px;
+            height : 40px; 
+            margin: 0 0 30px;
+            background:#ccc; 
+            border-radius: 40px;
+            margin-top : 20px;
+            margin-left: 50px;
+            margin-bottom: -10px;
+        }
+        .graph span
+        {
+            display : block;
+            padding : 0 10px;
+            height : 40px;
+            line-height : 40px;
+            text-align : right;
+            border-radius : 40px;
+            box-sizing : border-box;
+            color : white;
+           
+        }
+
+        .graph.stack1 span 
+        {
+            animation : stack1 2s 1;
+            background : cornflowerblue;
+        }
+
+        @keyframes stack1{
+            0%{width : 0; color : rgba(255,255,255,0);}
+            40%{color : rgba(255,255,255,1);}
+            100%{width : 75%;}
+        }
+
            
         </style>
         <script src="third-party/jquery-1.12.4.js"></script>
@@ -169,6 +208,12 @@
             해치웠나?
         </div>
 
+
+        <div class = "graph stack1">
+            <span style = "width : 75%;">전체 달성률 : 75%</span>
+        </div>
+
+
         <div id="schedule"></div>
         <div id="editdialog"></div>
         <div id="adddialog"></div>
@@ -177,21 +222,6 @@
 
         </div>
        
-        <div class = "box_05">
-            <a href="change.html">
-            <button class = "box_100" style ="color:white;">
-                내용 수정
-            </button>
-        </a>
-        </div>
-
-        <div class = "box_06">
-            <a href="choose.html" >
-            <button class = "box_200" style ="color:white;">
-                내용 추가
-            </button>
-        </a>
-        </div>
 
         <div class = "box_07">
             <a href="popup.html" target="_blank">

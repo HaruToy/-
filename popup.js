@@ -1,11 +1,45 @@
 
 
-//Ω∫ƒ…¡Ï ¿˙¿Âº“ø° ¿˙¿Â
+//ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ“øÔøΩ ÔøΩÔøΩÔøΩÔøΩ
 schedule = []
-
+/*
 // Search the bookmarks when entering the search keyword.
+document.addEventListener('DOMContentLoaded',()=>{
+    document.querySelector('#Renew').addEventListener('click', function() {   
+        accessVid();
+    
+    });
+},false);
 
-  
+//ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+  async function getCurrentTab() {
+    let queryOptions = { active: true, currentWindow: true };
+    let [tab] = await chrome.tabs.query(queryOptions);
+    return tab;
+  }
+ 
+// ÔøΩÔøΩÔøΩÔøΩ %ÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+function computeVidper() {
+  var LenVideo = document.querySelectorAll("video")[0].duration;
+  var CurVideo = document.querySelectorAll("video")[0].currentTime;
+  var result = ((CurVideo/LenVideo)*100|0);
+  return result;
+}
+
+//ÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ %ÔøΩÔøΩÔøΩ ÔøΩÔøΩ ÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+async function accessVid(){
+    let tab = await getCurrentTab();
+    chrome.scripting.executeScript({
+        target: {tabId: tab.id},
+        func: computeVidper
+      },
+      (PercentageofV)=>{
+          //ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ
+
+        document.getElementById('Percentage').innerText = PercentageofV[0].result+ '%';
+      });
+  }
+  */
   // Traverse the bookmark tree, and print the folder and nodes.
   function AddSch(query) {
     $('#schedule').empty();
@@ -30,6 +64,10 @@ schedule = []
     var edit =  $('<table><tr><td>Name</td><td>' +
     '<input id="title"></td></tr><tr><td>URL</td><td><input id="url">' +
     '</td></tr></table>');
+    var edit1 =  $('<table><tr><td>Name</td><td>' +
+    '<input id="title"></td></tr><tr><td>URL</td><td><input id="url">' +
+    '</td></tr><tr><td>ÏòàÏÉÅÏÜåÏöîÏãúÍ∞Ñ</td><td>' +
+    '<input id="expectedtime"></td></tr></table>');
     // Show add and edit links when hover over.
 
                 span.click(function (event) {
@@ -51,6 +89,7 @@ schedule = []
                         var obj = new Object();
                         obj.title = $('#title').val();
                         obj.url=$('#url').val();
+                        obj.ttime=$('#expectedtime').val();
                         schedule.push(obj);
                         $(this).dialog('destroy');
                         window.AddSch();
@@ -77,9 +116,9 @@ schedule = []
 
       var options = 
         $('<button id="editlink">Edit</button> <button id="deletelink">Delete</button>');
-          var edit =  $('<table><tr><td>Name</td><td>' +
-          '<input id="title1"></td></tr><tr><td>URL</td><td><input id="url1">' +
-          '</td></tr></table>');
+        var edit =  $('<table><tr><td>Name</td><td>' +
+        '<input id="title1"></td></tr><tr><td>URL</td><td><input id="url1">' +
+        '</td></tr></table>');
   
         // Show add and edit links when hover over.
       span.hover(function () {
@@ -130,6 +169,7 @@ schedule = []
                 var obj1 = new Object();
                 obj1.title = $('#title1').val();
                 obj1.url=$('#url1').val();
+                //obj1.ttime=$('#expectedtime1').val();
                 schedule[idx]=obj1;
                 console.log(schedule);
                 //anchor.text(edit.val());

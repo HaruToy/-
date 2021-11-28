@@ -3,66 +3,64 @@
 
 //������ ����ҿ� ����
 schedule = []
-/*
-// Search the bookmarks when entering the search keyword.
-document.addEventListener('DOMContentLoaded',()=>{
-    document.querySelector('.graph stack1').addEventListener('click', function() {   
-        accessVid();
-    });
-},false);
 
-//���� �� ���� ��������
-  async function getCurrentTab() {
-    let queryOptions = { active: true, currentWindow: true };
-    let [tab] = await chrome.tabs.query(queryOptions);
-    return tab;
-  }
- 
-// ���� %�� ��������
-function computeVidper() {
-  var LenVideo = document.querySelectorAll("video")[0].duration;
-  var CurVideo = document.querySelectorAll("video")[0].currentTime;
-  var result = ((CurVideo/LenVideo)*100|0);
-  return result;
+function Upt(){
+  chrome.tabs.query({active: true, currentWindow: true}, tabs => {
+    var tab=tabs[0];
+    url = tabs[0].url;
+    UpdateCT(url);
+  });
 }
 
-//�� ������ �������� %��� �� ��� ������
-async function accessVid(){
-    let tab = await getCurrentTab();
-    chrome.scripting.executeScript({
-        target: {tabId: tab.id},
-        func: computeVidper
-      },
-      (PercentageofV)=>{
-          //������
-          schedule[0].ctime = PercentageofV[0].result;
-        //document.getElementById('Percentage').innerText = PercentageofV[0].result+ '%';
-      });
-  }
-*/
+function UpdateCT(url){
+  chrome.tabs.executeScript({
+    code:'document.querySelectorAll("video")[0].currentTime.toString()+" "+document.querySelectorAll("video")[0].duration.toString()'
+  },function(result){
+      var vid_info=result.toString().split(" ");
+      if(result==null)return;
+      var ttime=parseFloat(vid_info[1]);
+      var ctime=parseFloat(vid_info[0]);
+    for(var i=0;i<schedule.length;i++){
+      if(schedule[i].url==url){
+        schedule[i].ttime=ttime;
+        schedule[i].ctime=ctime;
+        $('.graph.stack1').empty();
+        $('.graph.stack1').append(dumpGraph());
+      }
+      else{
+        //for debug        
+      }
+    }
+  });
+}
+
+
+
   // Traverse the bookmark tree, and print the folder and nodes.
   function AddSch() {
+    Upt();
     $('#schedule').empty();
-    $('.graph stack1').empty();
-    $('.graph stack1').append(dumpGraph());
     $('#schedule').append(dumpTreeNodes());
     //localStorage.setItem('sch',schedule);
   }
 
   
   function dumpGraph(){
-    var span = $('<span>');
     var t_ttime=0;
     var t_ctime=0;
     for (var i=0;i<schedule.length;i++){
       t_ttime+=schedule[i].ttime;
       t_ctime+=schedule[i].ctime;
     }
+    if(t_ttime==0){
+      result=0;
+    }
+    else{
     var result=((t_ctime/t_ttime)*100|0);
-    result=75;
+    }
+    //result=75;
     var grap=$('<span style = "width : '+result+'%;">전체 달성률 : '+result+'%</span>');
-    span.append(grap);
-    return span;
+    return grap;
   }
 
   function dumpTreeNodes() {
@@ -108,12 +106,9 @@ async function accessVid(){
                         var obj = new Object();
                         obj.title = $('#title').val();
                         obj.url=$('#url').val();
-                        obj.ttime=$('#expectedtime').val();
-                        chrome.tabs.executeScript({
-                          code:'var LenVideo = document.querySelectorAll("video")[0].duration;var CurVideo = document.querySelectorAll("video")[0].currentTime;(CurVideo/LenVideo)*100;'
-                        },function(result){
-                          obj.ctime=result;
-                        });
+                        obj.ttime=parseFloat($('#expectedtime').val());
+                        obj.ctime=0;
+
                         //obj.ctime=0;
                         schedule.push(obj);
                         $(this).dialog('destroy');

@@ -41,7 +41,8 @@ function UpdateCT(url){
     Upt();
     $('#schedule').empty();
     $('#schedule').append(dumpTreeNodes());
-    //localStorage.setItem('sch',schedule);
+    
+    
   }
 
   
@@ -113,7 +114,7 @@ function UpdateCT(url){
                         schedule.push(obj);
                         $(this).dialog('destroy');
                         window.AddSch();
-                        
+                        localStorage.setItem('sch',JSON.stringify(schedule));
                       },
                       'Cancel': function () {
                         edit1.hide();
@@ -165,7 +166,7 @@ function UpdateCT(url){
                 schedule.splice(idx,1);
                 span.parent().remove();
                 $(this).dialog('destroy');
-                
+                localStorage.setItem('sch',JSON.stringify(schedule));
               },
               Cancel: function () {
                 $(this).dialog('destroy');
@@ -202,7 +203,7 @@ function UpdateCT(url){
                 options.show();
                 $(this).dialog('destroy');
                 window.AddSch();
-                
+                localStorage.setItem('sch',JSON.stringify(schedule));
               },
               'Cancel': function () {
                 edit1.hide();
@@ -226,6 +227,12 @@ function UpdateCT(url){
   }
   
   document.addEventListener('DOMContentLoaded', function () {
+    var val=JSON.parse(localStorage.sch);
+    if(val.length)
+    {schedule=val;}
+    else{
+      console.log('Nothing');
+    }
     AddSch();
   });
   

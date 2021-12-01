@@ -1,8 +1,14 @@
 <!doctype html>
 <html lang="ko">
     <head>
-    <meta charset ="euc-kr">
-    <title>Graph</title>
+    <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+        <meta http-equiv = "X-UA-Compatible" content = "ie =edge">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js" integrity="sha512-O2fWHvFel3xjQSi9FyzKXWLTvnom+lOYR/AUEThL/fbP4hv1Lo5LCFCGuTXBRyKC4K4DJldg5kxptkgXAzUpvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="popup.css">
+        <title>chartJS</title>
+    <title>í•´ì¹˜ì› ë‚˜?</title>
 </head>
 <body>
     <style>
@@ -10,195 +16,26 @@
         {
             background-image: url('homepagebackground.jpg');
             padding : 50px;
-        }
-
-        .graph_name
-        {
-            height : 40px;
-            font-size : 40Px;
-            font-weight : bold;
-            z-index : 2;
-            text-align : center;
-            margin: 0 0 70px;
-        }
-
-        .graph
-        {
-            width : 700px;
-            height : 40px; 
-            margin: 0 0 30px;
-            background:#ccc; 
-            border-radius: 40px;
-        }
-        .graph span
-        {
-            display : block;
-            padding : 0 10px;
-            height : 40px;
-            line-height : 40px;
-            text-align : right;
-            border-radius : 40px;
-            box-sizing : border-box;
-            color : white;
-           
-        }
-
-        .graph.stack1 span 
-        {
-            animation : stack1 2s 1;
-            background : violet;
-        }
-
-        .graph.stack2 span 
-        {
-            animation : stack2 2s 1;
-            background : skyblue;
-        }
-
-        .graph.stack3 span 
-        {
-            animation : stack3 2s 1;
-            background : orange;
-        }
-
-        .graph.stack4 span 
-        {
-            animation : stack4 2s 1;
-            background : darkseagreen;
-        }
-
-        .graph.stack5 span 
-        {
-            animation : stack5 2s 1;
-            background : gold;
-        }
-
-        .graph.stack6 span 
-        {
-            animation : stack6 2s 1;
-            background : lightseagreen;
-        }
-        .good
-        {
-            float : right;
-            text-align : center;
-            font-size : 15px;
-        }
-
-
-        @keyframes stack1{
-            0%{width : 0; color : rgba(255,255,255,0);}
-            40%{color : rgba(255,255,255,1);}
-            100%{width : 75%;}
-        }
-
-        @keyframes stack2{
-            0%{width : 0; color : rgba(255,255,255,0);}
-            40%{color : rgba(255,255,255,1);}
-            100%{width : 60%;}
-        }
-
-        @keyframes stack3{
-            0%{width : 0; color : rgba(255,255,255,0);}
-            40%{color : rgba(255,255,255,1);}
-            100%{width : 25%;}
-        }
-
-        @keyframes stack4{
-            0%{width : 0; color : rgba(255,255,255,0);}
-            40%{color : rgba(255,255,255,1);}
-            100%{width : 50%;}
-        }
-
-        @keyframes stack5{
-            0%{width : 0; color : rgba(255,255,255,0);}
-            40%{color : rgba(255,255,255,1);}
-            100%{width : 90%;}
-        }
-
-        @keyframes stack6{
-            0%{width : 0; color : rgba(255,255,255,0);}
-            40%{color : rgba(255,255,255,1);}
-            100%{width : 5%;}
-        }
-        
+}
     </style>
-
-
+    
     <div class = "graph_name">
-        ÇØÄ¡¿ü³ª?
+        í•´ì¹˜ì› ë‚˜?
     </div>
 
-    <div class = "good">
-        <table border = "1", cellpadding ="10", cellspacing = "20", width = "700">
-            <tr>
-                <th>»ö±ò</th>
-                <th>¾÷¹« ¸ñ·Ï</th>
-                <th>ÀüÃ¼ ½Ã°£ (ºÐ)</th>
-                <th>³²Àº ½Ã°£ (ºÐ)</th>
-            </tr>
-            <tr>
-                <td width = "50" bgcolor="violet"></td>
-                <td width = "350">¸®´ª½º µ¿¿µ»ó °­ÀÇ</td>
-                <td width = "150">60</td>
-                <td width = "150">45</td>
-            </tr>
-            <tr>
-                <td width = "50" bgcolor="skyblue"></td>
-                <td width = "350">HTML, CSS, JS ¿µ»ó ½ÃÃ»</td>
-                <td width = "150">120</td>
-                <td width = "150">72</td>
-            </tr>
-            <tr>
-                <td width = "50" bgcolor="orange"></td>
-                <td width = "350">DB¿Í JS ¿¬°á¹æ¹ý °øºÎ</td>
-                <td width = "150">240</td>
-                <td width = "150">60</td>
-            </tr>
-            <tr>
-                <td width = "50" bgcolor="darkseagreen"></td>
-                <td width = "350">server Á¦ÀÛ</td>
-                <td width = "150">170</td>
-                <td width = "150">85</td>
-            </tr>
-            <tr>
-                <td width = "50" bgcolor="gold"></td>
-                <td width = "350">Ä¸½ºÅæ º¸°í¼­ ÀÛ¼º</td>
-                <td width = "150">180</td>
-                <td width = "150">162</td>
-            </tr>
-            <tr>
-                <td width = "50" bgcolor="lightseagreen"></td>
-                <td width = "350">ÀáÀÚ±â À§ÇÑ ³ë·¡ µè±â</td>
-                <td width = "150">420</td>
-                <td width = "150">21</td>
-            </tr>
-        </table>
+    <div class = "container2">
+        <canvas id = "myChart3"></canvas>
     </div>
 
-    <div class = "graph stack1">
-        <span style = "width : 75%;">75%</span>
+    <div class = "container1">
+        <canvas id = "myChart"></canvas>
     </div>
 
-    <div class = "graph stack2">
-        <span style = "width : 60%;">60%</span>
-    </div>
+    
+    <script type = "text/javascript" src = "popup.js"></script>
 
-    <div class = "graph stack3">
-        <span style = "width : 25%;">25%</span>
-    </div>
+   
 
-    <div class = "graph stack4">
-        <span style = "width : 50%;">50%</span>
-    </div>
-
-    <div class = "graph stack5">
-        <span style = "width : 90%;">90%</span>
-    </div>
-
-    <div class = "graph stack6">
-        <span style = "width : 5%;">5%</span>
-    </div>
     
 </body>
 

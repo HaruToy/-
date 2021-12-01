@@ -80,18 +80,18 @@ function UpdateCT(url){
     var what=$('<div class = "box_02"><button class = "work_num_01">   +   </button></div>');
     span.append(what);
    
-    var edit =  $('<table><tr><td>Name</td><td>' +
-    '<input id="title"></td></tr><tr><td>URL</td><td><input id="url">' +
+    var edit =  $('');
+    var pedit =  $('<table><tr><td>Name</td><td>' +
+    '<input id="title10"></td></tr><tr><td>예상 소요 시간(분)</td><td><input id="totime">' +
     '</td></tr></table>');
-
     var edit1 =  $('<table><tr><td>Name</td><td>' +
     '<input id="title"></td></tr><tr><td>URL</td><td><input id="url" placeholder="미입력시 현재 페이지로 등록">' +
     '</td></tr></table>');
     // Show add and edit links when hover over.
 
                 span.click(function (event) {
-                  edit1.show();
-                  $('#adddialog').empty().append(edit1).dialog({
+                  edit.show();
+                  $('#adddialog').empty().append(edit).dialog({
                     autoOpen: false,
                     closeOnEscape: true,
                     title: 'Add New Schedule',
@@ -103,24 +103,87 @@ function UpdateCT(url){
                       of: event.target.parentElement.parentElement
                     },
                     buttons: {
-                      'Add': function () {
-                        edit1.hide();
-                        var obj = new Object();
-                        obj.title = $('#title').val();
-                        obj.url=$('#url').val();
-                        if(obj.url=="")obj.url=c_url;
-                        obj.ttime=0;
-                        console.log(obj.ttime);
-                        obj.ctime=0;
-
-                        //obj.ctime=0;
-                        schedule.push(obj);
+                      'Video': function () {
+                        edit.hide();
+                        edit1.show();
+                        $('#vdialog').empty().append(edit1).dialog({
+                          autoOpen: false,
+                          closeOnEscape: true,
+                          title: 'Add New Schedule',
+                          modal: true,
+                          show: 'slide',
+                          position: {
+                            my: "left",
+                            at: "center",
+                            of: event.target.parentElement.parentElement
+                          },
+                          buttons: {
+                            'Add': function () {
+                              edit1.show();
+                              var obj = new Object();
+                              obj.title = $('#title').val();
+                              obj.url=$('#url').val();
+                              if(obj.url=="")obj.url=c_url;
+                              obj.ttime=0;
+                              console.log(obj.ttime);
+                              obj.ctime=0;
+      
+                              //obj.ctime=0;
+                              schedule.push(obj);
+                              edit1.hide();
+                              $(this).dialog('destroy');
+                              window.AddSch();
+                              localStorage.setItem('sch',JSON.stringify(schedule));
+                            },
+                            'Close': function () {
+                              edit1.hide();
+                              $(this).dialog('destroy');
+                            }
+                          }
+                        }).dialog('open');
                         $(this).dialog('destroy');
                         window.AddSch();
                         localStorage.setItem('sch',JSON.stringify(schedule));
                       },
-                      'Cancel': function () {
-                        edit1.hide();
+                      'Program': function () {
+                        edit.hide();
+                        pedit.show();
+                        $('#pdialog').empty().append(pedit).dialog({
+                          autoOpen: false,
+                          closeOnEscape: true,
+                          title: 'Add New Schedule',
+                          modal: true,
+                          show: 'slide',
+                          position: {
+                            my: "left",
+                            at: "center",
+                            of: event.target.parentElement.parentElement
+                          },
+                          buttons: {
+                            'Add': function () {
+                              pedit.hide();
+                              var obj = new Object();
+                              obj.title = $('#title10').val();
+                              obj.url="";
+                              obj.ttime=parseInt($('#totime').val())*60;
+                              console.log(obj.ttime);
+                              obj.ctime=0;
+      
+                              //obj.ctime=0;
+                              schedule.push(obj);
+                              edit1.hide();
+                             
+                              $(this).dialog('destroy');
+                              window.AddSch();
+                              localStorage.setItem('sch',JSON.stringify(schedule));
+                            },
+                            'Close': function () {
+                              pedit.hide();
+      
+                              $(this).dialog('destroy');
+                            }
+                          }
+                        }).dialog('open');
                         $(this).dialog('destroy');
                       }
                     }
@@ -141,10 +204,9 @@ function UpdateCT(url){
 
       var options = 
         $('<button id="editlink" class="hobu"></button> <button id="deletelink" class="hobu"></button>');
-        var edit =  $('<table><tr><td>Name</td><td>' +
-        '<input id="title1" value="'+schedule[idx].title+'"></td></tr><tr><td>URL</td><td><input id="url1" value="'+schedule[idx].url+'">' +
-        '</td></tr><tr><td>예상소요시간</td><td>' +
-        '<input id="expectedtime1" value="'+String(schedule[idx].ttime)+'"></td></tr></table>');
+        var pedit =  $('<table><tr><td>Name</td><td>' +
+        '<input id="title11"value="'+schedule[idx].title+'"></td></tr><tr><td>예상 소요 시간(분)</td><td><input id="totime11" value="'+schedule[idx].ttime/60+'">' +
+        '</td></tr></table>');
         var edit1 =  $('<table><tr><td>Name</td><td>' +
         '<input id="title1" value="'+schedule[idx].title+'"></td></tr><tr><td>URL</td><td><input id="url1" value="'+schedule[idx].url+'">' +
         '</td></tr></table>');
@@ -185,6 +247,45 @@ function UpdateCT(url){
         });
 
         $('#editlink').click(function (event) {
+          if(schedule[idx].url=="")
+          {
+            pedit.show();
+          //edit.val(anchor.text());
+          $('#editdialog').empty().append(pedit).dialog({
+            autoOpen: false,
+            closeOnEscape: true,
+            title: 'Edit Title',
+            modal: true,
+            show: 'fade',
+            position: {
+              my: "left",
+              at: "center",
+              of: event.target.parentElement.parentElement
+            },
+            buttons: {
+              'Save': function () {
+                edit1.hide();
+                var obj1 = new Object();
+                obj1.title = $('#title11').val();
+                obj1.url=""
+                obj1.ttime=$('#totime11').val()*60;
+                obj1.ctime=schedule[idx].ctime;
+                schedule[idx]=obj1;
+                console.log(schedule);
+                //anchor.text(edit.val());
+                options.show();
+                $(this).dialog('destroy');
+                window.AddSch();
+                localStorage.setItem('sch',JSON.stringify(schedule));
+              },
+              'Cancel': function () {
+                pedit.hide();
+                $(this).dialog('destroy');
+              }
+            }
+          }).dialog('open');
+          }
+          else{
           edit1.show();
           //edit.val(anchor.text());
           $('#editdialog').empty().append(edit1).dialog({
@@ -219,7 +320,9 @@ function UpdateCT(url){
                 $(this).dialog('destroy');
               }
             }
+            
           }).dialog('open');
+        }
         });
         options.fadeIn();
       },

@@ -1,6 +1,3 @@
-
-
-
 //������ ����ҿ� ����
 schedule = []
 var c_url;
@@ -237,8 +234,12 @@ function UpdateCT(url){
   }
   
   document.addEventListener('DOMContentLoaded', function () {
-    var val=JSON.parse(localStorage.sch);
-    if(val.length)
+    var val;
+    if(localStorage.sch!=null)
+    {
+      val=JSON.parse(localStorage.sch);
+    }
+    if(val)
     {schedule=val;}
     else{
       console.log('Nothing');

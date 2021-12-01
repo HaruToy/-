@@ -3,7 +3,7 @@
 
 //������ ����ҿ� ����
 schedule = []
-
+var c_url;
 function Upt(){
   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
     var tab=tabs[0];
@@ -13,6 +13,8 @@ function Upt(){
 }
 
 function UpdateCT(url){
+  c_url=url;
+ // console.log(c_url);
   chrome.tabs.executeScript({
     code:'document.querySelectorAll("video")[0].currentTime.toString()+" "+document.querySelectorAll("video")[0].duration.toString()'
   },function(result){
@@ -23,7 +25,8 @@ function UpdateCT(url){
     for(var i=0;i<schedule.length;i++){
       if(schedule[i].url==url){
         schedule[i].ttime=ttime;
-        schedule[i].ctime=ctime;
+        if(schedule[i].ctime<ctime)
+        {schedule[i].ctime=ctime;}
         $('.graph.stack1').empty();
         $('.graph.stack1').append(dumpGraph());
       }
@@ -32,6 +35,8 @@ function UpdateCT(url){
       }
     }
   });
+  $('.graph.stack1').empty();
+  $('.graph.stack1').append(dumpGraph());
 }
 
 
@@ -83,9 +88,8 @@ function UpdateCT(url){
     '</td></tr></table>');
 
     var edit1 =  $('<table><tr><td>Name</td><td>' +
-    '<input id="title"></td></tr><tr><td>URL</td><td><input id="url">' +
-    '</td></tr><tr><td>예상소요시간</td><td>' +
-    '<input id="expectedtime"></td></tr></table>');
+    '<input id="title"></td></tr><tr><td>URL</td><td><input id="url" placeholder="미입력시 현재 페이지로 등록">' +
+    '</td></tr></table>');
     // Show add and edit links when hover over.
 
                 span.click(function (event) {
@@ -107,7 +111,9 @@ function UpdateCT(url){
                         var obj = new Object();
                         obj.title = $('#title').val();
                         obj.url=$('#url').val();
-                        obj.ttime=parseFloat($('#expectedtime').val());
+                        if(obj.url=="")obj.url=c_url;
+                        obj.ttime=0;
+                        console.log(obj.ttime);
                         obj.ctime=0;
 
                         //obj.ctime=0;
@@ -139,12 +145,12 @@ function UpdateCT(url){
       var options = 
         $('<button id="editlink">Edit</button> <button id="deletelink">Delete</button>');
         var edit =  $('<table><tr><td>Name</td><td>' +
-        '<input id="title1"></td></tr><tr><td>URL</td><td><input id="url1">' +
-        '</td></tr></table>');
-        var edit1 =  $('<table><tr><td>Name</td><td>' +
-        '<input id="title1"></td></tr><tr><td>URL</td><td><input id="url1">' +
+        '<input id="title1" value="'+schedule[idx].title+'"></td></tr><tr><td>URL</td><td><input id="url1" value="'+schedule[idx].url+'">' +
         '</td></tr><tr><td>예상소요시간</td><td>' +
-        '<input id="expectedtime1"></td></tr></table>');
+        '<input id="expectedtime1" value="'+String(schedule[idx].ttime)+'"></td></tr></table>');
+        var edit1 =  $('<table><tr><td>Name</td><td>' +
+        '<input id="title1" value="'+schedule[idx].title+'"></td></tr><tr><td>URL</td><td><input id="url1" value="'+schedule[idx].url+'">' +
+        '</td></tr></table>');
         // Show add and edit links when hover over.
       span.hover(function () {
        span.append(options);
@@ -219,8 +225,12 @@ function UpdateCT(url){
         function () {
           options.remove();
         }).append(span);
-    
-  
+
+      what.click(function(){
+        chrome.tabs.create({url: schedule[idx].url});
+        
+      }).append(what);
+  //+String(schedule[i].ctime)
     var li = $( '<ul>' ).append(span);
   
     return li;

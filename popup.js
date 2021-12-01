@@ -62,7 +62,7 @@ function UpdateCT(url){
     var result=((t_ctime/t_ttime)*100|0);
     }
     //result=75;
-    var grap=$('<span style = "width : '+result+'%;">전체 달성률 : '+result+'%</span>');
+    var grap=$('<span style = "width : '+result+'%;">'+result+'%</span>');
     return grap;
   }
 
@@ -76,7 +76,7 @@ function UpdateCT(url){
   }
 
   function dumpNewNode(){
-    var span = $('<span>');
+    var span = $('<div>');
     var what=$('<div class = "box_02"><button class = "work_num_01">   +   </button></div>');
     span.append(what);
    
@@ -134,13 +134,13 @@ function UpdateCT(url){
 
 
   function dumpNode(sch,idx) {
-      var span = $('<span>');
-      var what=$('<div class = "box_02"><button id="sch" class = "work_num_01">' +sch.title+ '</button></div>');
+      var span = $('<div class = "box_02">');
+      var what=$('<button id="sch" class = "work_num_01">' +sch.title+ '</button>');
       span.append(what);
 
 
       var options = 
-        $('<button id="editlink">Edit</button> <button id="deletelink">Delete</button>');
+        $('<button id="editlink" class="hobu"></button> <button id="deletelink" class="hobu"></button>');
         var edit =  $('<table><tr><td>Name</td><td>' +
         '<input id="title1" value="'+schedule[idx].title+'"></td></tr><tr><td>URL</td><td><input id="url1" value="'+schedule[idx].url+'">' +
         '</td></tr><tr><td>예상소요시간</td><td>' +
@@ -151,6 +151,12 @@ function UpdateCT(url){
         // Show add and edit links when hover over.
       span.hover(function () {
        span.append(options);
+       $("#deletelink").button({
+        icon:"ui-icon-trash"
+      });
+      $("#editlink").button({
+        icon:"ui-icon-pencil"
+      });
         $('#deletelink').click(function (event) {
           console.log(event)
           $('#deletedialog').empty().dialog({
@@ -234,6 +240,12 @@ function UpdateCT(url){
   }
   
   document.addEventListener('DOMContentLoaded', function () {
+    let today = new Date();   
+
+    let year = today.getFullYear(); // 년도
+    let month = today.getMonth() + 1;  // 월
+    let date = today.getDate();  // 날짜
+    let day = today.getDay();  // 요일
     var val;
     if(localStorage.sch!=null)
     {

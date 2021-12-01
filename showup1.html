@@ -6,37 +6,71 @@
         <link rel="stylesheet" href="third-party/jquery-ui.structure.css">
         <link rel="stylesheet" href="third-party/jquery-ui.theme.css">
         <style>
+            * {
+  margin: 0;
+  padding: 0;
+}
              body{
                 width : 800px;
                 height : 200px;
                 margin : 0;
+                background-color: #F6F6F6;
                 overflow: auto;
             }
             .title
             {
                 width : 800px;
                 height : 50px;
-                background-color: silver;
-                font-size : 40px;
+                background-color: #112D4E;
+                color: rgb(255, 255, 255);
+                font-size : 30px;
+                font-family: 'Roboto', sans-serif;
                 font-weight: bold;
                 z-index : 2;
                 text-align: center;
                 
             }
+            .per
+            {
+                width : 400px;
+                height : 30px;
+                font-size : 20px;
+                font-family: 'Roboto', sans-serif;
+                z-index : 2;
+                line-height: 50px;
+                margin-left: 60px;
+                
+            }
+            #schedule{
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+            padding-inline-start: 0px;
+            }
+            #box_02{
+                margin:auto;
+                display:block;
+            }
             .work_num_01
             {
-                width : 580px;
-                height : 35px;
-                background-color: skyblue;
-                border : none;
-                font-size: 25px;
-                z-index : 2;
-                border-radius: 10px;
-                text-align: center;
-                box-shadow: 0 4px 8px rgba(135,206,235,0.3);
-                transition: 0.3s;
-                margin-top : 10px;
-                margin-left: 10px;
+                
+                width: 550px;
+                height: 40px;
+                font-family: 'Roboto', sans-serif;
+                font-size: 20px;
+                text-transform: uppercase;
+                letter-spacing: 2.5px;
+                font-weight: 500;
+                color: #000;
+                background-color: #fff;
+                border: none;
+                border-radius: 45px;
+                box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease 0s;
+                cursor: pointer;
+                outline: none;
+                margin-left: 100px;
+                margin-top : 20px;
                 margin-right:10px;
             }
             
@@ -119,7 +153,19 @@
                 margin-bottom: 10px;
                 overflow: auto;
             }
-
+            .hobu
+            {
+                width : 30px;
+                height : 30px;
+                background-color: skyblue;
+                border : none;
+                font-size: 10px;
+                z-index : 2;
+                border-radius: 5px;
+                text-align: center;
+                transition: 0.3s;
+                overflow: auto;
+            }
             .box_100:hover
             {
                 transform : scale(0.95);
@@ -154,10 +200,10 @@
             }
             .work_num_01:hover
             {
-                transform : scale(0.95);
-                background-color: rgba(30,115,190,0.9);
-                cursor : pointer;
-                box-shadow: 0 2px 2px rgba(30,115,190,0.6);
+                background-color: #112D4E;
+                box-shadow: 0px 15px 20px #09192b8a;
+                color: #fffefe;
+                transform: translateY(-7px);
                
             }
 
@@ -168,7 +214,7 @@
             margin: 0 0 30px;
             background:#ccc; 
             border-radius: 40px;
-            margin-top : 20px;
+
             margin-left: 50px;
             margin-bottom: -10px;
         }
@@ -184,11 +230,16 @@
             color : white;
            
         }
+        .graph.stack1
+        {
+            background : #DBE2EF;
+        }
 
         .graph.stack1 span 
         {
+
             animation : stack1 2s 1;
-            background : cornflowerblue;
+            background : #3F72AF;
         }
 
         @keyframes stack1{
@@ -201,19 +252,20 @@
         </style>
         <script src="third-party/jquery-1.12.4.js"></script>
         <script src="third-party/jquery-ui-1.12.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="../jquery-ui-1.12.1/jquery-ui.min.css" />
+
     </head>
     <body>
         
         <div class = "title">
             해치웠나?
         </div>
-
-
+        <span class="per">전체 달성률</span>
         <div class = "graph stack1">     
         </div>
 
 
-        <div id="schedule"></div>
+        <span id="schedule"></span>
         <div id="editdialog"></div>
         <div id="adddialog"></div>
         <div id="deletedialog"></div>

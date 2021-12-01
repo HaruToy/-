@@ -333,8 +333,10 @@ function UpdateCT(url){
         }).append(span);
 
       what.click(function(){
-        chrome.tabs.create({url: schedule[idx].url});
-        
+        if(schedule[idx].url!=""){
+          chrome.tabs.create({
+            url: schedule[idx].url});
+        }
       }).append(what);
   //+String(schedule[i].ctime)
     var li = $( '<ul>' ).append(span);

@@ -1,4 +1,5 @@
 var pieLables = [];
+var call = []; //숫자 배열 넣는 것에 문제가 발생한다. 숫자는 문자로 변환이 필요할듯
 document.addEventListener('DOMContentLoaded', function () {
     let today = new Date();   
 
@@ -16,7 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
         for(var i=0;i<val.length;i++)
         { 
             pieLables.push(val[i].title);
+            call.push(val[i].ttime);
         }
+        document.write(pieLables); // sdf라는 이름으로 6%를 (전체 : 2시간 30분, 본 시간 : 10분)을 했는데 결과로 sdf0가 나옴
+        document.write(call);
     
     
     }
@@ -61,10 +65,7 @@ var massPopChart = new Chart(myChart,{
          datasets : [
             {
             label : '각 업무별 달성률(%)', //보여질 라벨
-            data : [
-                20, 50, 30, 40, 80, 2,27, 95 //안에 넣을 데이터 값(높이 값)
-
-            ],
+            data : call,
             backgroundColor : 
             [
                 "rgba(39, 80, 76, 0.5",
@@ -122,7 +123,7 @@ var massPopChart = new Chart(myChart,{
 
 
 
-var pieData = [4,8,12,16,20,24,2,14];
+
 
 var pieColors = [
     "rgba(153,21,0,0.5)",
@@ -143,7 +144,7 @@ const massPopChart3 = new Chart(myChart3,{
          datasets : [
             {
             label : '오늘의 업무 그래프(%)', //보여질 라벨
-            data : pieData,
+            data : call,
             backgroundColor : pieColors, 
             borderColor : 
             [

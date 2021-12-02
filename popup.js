@@ -204,7 +204,10 @@ function UpdateCT(url){
 
 
       var options = 
-        $('<button id="editlink" class="hobu"></button> <button id="deletelink" class="hobu"></button>');
+       $(
+        '<button id="starttime" class="hobu"></button> <button id="stoptime" class="hobu"></button>'+
+        '<button id="editlink" class="hobu"></button> <button id="deletelink" class="hobu"></button>'
+        );
         var pedit =  $('<table><tr><td>Name</td><td>' +
         '<input id="title11"value="'+schedule[idx].title+'"></td></tr><tr><td>예상 소요 시간(분)</td><td><input id="totime11" value="'+schedule[idx].ttime/60+'">' +
         '</td></tr></table>');
@@ -219,6 +222,12 @@ function UpdateCT(url){
       });
       $("#editlink").button({
         icon:"ui-icon-pencil"
+      });
+      $("#starttime").button({
+        icon:"ui-icon-play"
+      });
+      $("#stoptime").button({
+        icon: "ui-icon-pause"
       });
         $('#deletelink').click(function (event) {
           console.log(event)
@@ -325,6 +334,27 @@ function UpdateCT(url){
           }).dialog('open');
         }
         });
+        var timer;
+        $('#starttime').click(function (event){
+         
+         let sttime = new Date().getTime();
+         let sttimeInsec = Math.round(sttime / 1000);
+          timer=setInterval(function (){
+            let cttime = new Date().getTime();
+            let cttimeInsec = Math.round(cttime / 1000);
+            let ptime = cttimeInsec-sttimeInsec;
+            let hour=parseInt(ptime/3600);
+            let min =parseInt((ptime%3600)/60);
+            let sec=ptime%60;
+            console.log(ptime);
+            
+          },1000);
+        });
+
+        $('#stoptime').click(function (event){
+            clearInterval(timer);
+            });
+
         options.fadeIn();
       },
   

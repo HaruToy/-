@@ -1,0 +1,30 @@
+.container1{
+    width: 500px;
+    height : 500px;
+    border : 1px solid #ddd;
+    padding : 10px;
+    border-radius:8px;
+    position : absolute;
+    margin-top: 1%;
+    margin-left: 31.5%;
+    
+
+}
+.container2{
+    width: 500px;
+    height : 500px;
+    border : 1px solid #ddd;
+    padding : 10px;
+    border-radius:8px;
+    position : absolute;
+    margin-top: 1%;
+    
+}
+.graph_name{
+        height : 40px;
+        font-size : 40Px;
+        font-weight : bold;
+        z-index : 2;
+        text-align : center;
+        margin: 0 0 70px;
+}

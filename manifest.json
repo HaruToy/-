@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+
+  "name": "해치웠나",
+  "description": "My lovely words",
+  "version": "1.0",
+  "browser_action": {
+      "default_icon": "panda.jpg",
+      "default_popup": "showup1.html"
+  },
+  "permissions": [
+      "activeTab","storage","declarativeContent","tabs","<all_urls>",
+    "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.1/chart.min.js; object-src 'self'"
+
+}

@@ -26,6 +26,7 @@ function UpdateCT(url){
         {schedule[i].ctime=ctime;}
         $('.graph.stack1').empty();
         $('.graph.stack1').append(dumpGraph());
+        localStorage.setItem('sch',JSON.stringify(schedule));
       }
       else{
         //for debug        
@@ -200,15 +201,20 @@ function UpdateCT(url){
   function dumpNode(sch,idx) {
       var span = $('<div class = "box_02">');
       var what=$('<button id="sch" class = "work_num_01">' +sch.title+ '</button>');
-      var whattime=$('<span class=time>00 : 00 : 00</span>');
+      var curper=$('<span class=per>'+ Math.round((schedule[idx].ctime/schedule[idx].ttime)*100)+' %</span>');
+      var whattime=$('<span class=time>0h 0m 0s</span>');
       span.append(what);
-      span.append(whattime);
-     
-      var options = 
-       $(
-        '<span id=button-list><button id="starttime" class="hobu"></button> <button id="stoptime" class="hobu"></button>'+
-        '<button id="editlink" class="hobu"></button> <button id="deletelink" class="hobu"></button></span>'
+      if(schedule[idx].url=="")
+      {span.append(whattime);}
+     else{
+       span.append(curper);
+     }
+      var options1 = 
+       $('<span id=button-list><button id="starttime" class="hobu"></button> <button id="stoptime" class="hobu"></button>'
         );
+        var options2 = 
+        $('<span id=button-list><button id="editlink" class="hobu"></button> <button id="deletelink" class="hobu"></button></span>'
+         );
         var pedit =  $('<table><tr><td>Name</td><td>' +
         '<input id="title11"value="'+schedule[idx].title+'"></td></tr><tr><td>예상 소요 시간(분)</td><td><input id="totime11" value="'+schedule[idx].ttime/60+'">' +
         '</td></tr></table>');
@@ -217,8 +223,16 @@ function UpdateCT(url){
         '</td></tr></table>');
         // Show add and edit links when hover over.
       span.hover(function () {
-       span.append(options);
-       whattime.remove();
+       
+       if(schedule[idx].url=="")
+       {whattime.remove();
+        span.append(options1);
+        span.append(options2);
+      }
+       else{
+        curper.remove();
+        span.append(options2);
+       }
        $("#deletelink").button({
         icon:"ui-icon-trash"
       });
@@ -349,11 +363,10 @@ function UpdateCT(url){
             let hour=parseInt(ptime/3600);
             let min =parseInt((ptime%3600)/60);
             let sec=ptime%60;
-            
-            var tagName = $(this).prop('tagName');
-            console.log(tagName);
-           // $(this).parent().children(".time")
-            //$(this).parent().children(".time").text(String(hour)+' : '+String(min)+' : '+String(sec));
+
+            var tagName = $(this).parents('.box_02').prop('tagName');
+            alert(tagName);
+            $(".time").text(String(hour)+' : '+String(min)+' : '+String(sec));
           },1000);
         });
 
@@ -367,8 +380,15 @@ function UpdateCT(url){
   
         // unhover
         function () {
-          options.remove();
-          span.append(whattime);
+          if(schedule[idx].url=="")
+          {span.append(whattime);
+            options1.remove();
+           options2.remove();
+         }
+          else{
+            span.append(curper);
+            options2.remove();
+          }
         }).append(span);
 
       what.click(function(){

@@ -200,13 +200,14 @@ function UpdateCT(url){
   function dumpNode(sch,idx) {
       var span = $('<div class = "box_02">');
       var what=$('<button id="sch" class = "work_num_01">' +sch.title+ '</button>');
+      var whattime=$('<span class=time>00 : 00 : 00</span>');
       span.append(what);
-
-
+      span.append(whattime);
+     
       var options = 
        $(
-        '<button id="starttime" class="hobu"></button> <button id="stoptime" class="hobu"></button>'+
-        '<button id="editlink" class="hobu"></button> <button id="deletelink" class="hobu"></button>'
+        '<span id=button-list><button id="starttime" class="hobu"></button> <button id="stoptime" class="hobu"></button>'+
+        '<button id="editlink" class="hobu"></button> <button id="deletelink" class="hobu"></button></span>'
         );
         var pedit =  $('<table><tr><td>Name</td><td>' +
         '<input id="title11"value="'+schedule[idx].title+'"></td></tr><tr><td>예상 소요 시간(분)</td><td><input id="totime11" value="'+schedule[idx].ttime/60+'">' +
@@ -217,6 +218,7 @@ function UpdateCT(url){
         // Show add and edit links when hover over.
       span.hover(function () {
        span.append(options);
+       whattime.remove();
        $("#deletelink").button({
         icon:"ui-icon-trash"
       });
@@ -335,6 +337,7 @@ function UpdateCT(url){
         }
         });
         var timer;
+        let ptime;
         $('#starttime').click(function (event){
          
          let sttime = new Date().getTime();
@@ -342,16 +345,20 @@ function UpdateCT(url){
           timer=setInterval(function (){
             let cttime = new Date().getTime();
             let cttimeInsec = Math.round(cttime / 1000);
-            let ptime = cttimeInsec-sttimeInsec;
+            ptime = cttimeInsec-sttimeInsec;
             let hour=parseInt(ptime/3600);
             let min =parseInt((ptime%3600)/60);
             let sec=ptime%60;
-            console.log(ptime);
             
+            var tagName = $(this).prop('tagName');
+            console.log(tagName);
+           // $(this).parent().children(".time")
+            //$(this).parent().children(".time").text(String(hour)+' : '+String(min)+' : '+String(sec));
           },1000);
         });
 
         $('#stoptime').click(function (event){
+            console.log(timer);
             clearInterval(timer);
             });
 
@@ -361,6 +368,7 @@ function UpdateCT(url){
         // unhover
         function () {
           options.remove();
+          span.append(whattime);
         }).append(span);
 
       what.click(function(){

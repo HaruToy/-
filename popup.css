@@ -5,11 +5,10 @@
     padding : 10px;
     border-radius:8px;
     position : absolute;
-    margin-top: 1%;
-    margin-left: 31.5%;
-    
-
+    margin-top: 3%;
+    margin-left: 33%;
 }
+
 .container2{
     width: 500px;
     height : 500px;
@@ -17,9 +16,11 @@
     padding : 10px;
     border-radius:8px;
     position : absolute;
-    margin-top: 1%;
+    margin-left: 2%;
+    margin-top: 3%;
     
 }
+
 .graph_name{
         height : 40px;
         font-size : 40Px;
@@ -27,4 +28,63 @@
         z-index : 2;
         text-align : center;
         margin: 0 0 70px;
+}
+
+.buildup1{
+    width : 500px;
+    height: 50px;
+    border : 1px solid #ddd;
+    font-size : 20Px;
+    font-weight : bold;
+    text-align : center;
+    padding : 10px;
+    border-radius:8px;
+    position : absolute;
+    margin-top: 0.1%;
+    margin-left: 2%;
+}
+
+.buildup2{
+    width : 500px;
+    height: 50px;
+    border : 1px solid #ddd;
+    padding : 10px;
+    font-size : 20Px;
+    font-weight : bold;
+    text-align : center;
+    border-radius:8px;
+    position : absolute;
+    margin-top: 0.1%;
+    margin-left: 33%;
+}
+
+.buildup3{
+    width : 500px;
+    height: 50px;
+    border : 1px solid #ddd;
+    padding : 10px;
+    font-size : 20Px;
+    font-weight : bold;
+    text-align : center;
+    border-radius:8px;
+    position : absolute;
+    margin-top: 0.1%;
+    margin-left: 62%;
+}
+
+
+table, th, td
+{
+    border : 1px solid;
+
+}
+table
+{   
+    width : 500px;
+    padding : 10px;
+    font-weight : bold;
+    text-align : center;
+    border-radius:8px;
+    margin-top: 7.2%;
+    margin-left: 65.4%;
 }

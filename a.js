@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for(var i=0;i<val.length;i++)
         { 
             pieLables.push(val[i].title);
-            oLables.push(val[i].title)
+            oLables.push(val[i].title);
             var result=Math.round((val[i].ctime/val[i].ttime)*100);
             call.push(result);
             tt=tt+val[i].ttime;
@@ -43,39 +43,57 @@ document.addEventListener('DOMContentLoaded', function () {
                 data : call,
                 backgroundColor : 
                 [
-                    "rgba(39, 80, 76, 0.5",
-                    "rgba(40, 12, 80, 0.5",
-                    "rgba(25, 30, 90, 0.5",
-                    "rgba(10, 90, 20, 0.5",
-                    "rgba(80, 50, 30, 0.5",
-                    "rgba(70, 80, 40, 0.5",
-                    "rgba(39, 80, 76, 0.5",
-                    "rgba(40, 12, 80, 0.5",
-                    "rgba(25, 30, 90, 0.5"
+                    "rgba(230, 212, 18, 0.7",
+                    "rgba(93, 201, 188, 0.5",
+                    "rgba(38, 148, 137, 0.5",
+                    "rgba(198, 58, 68, 0.5",
+                    "rgba(246, 113, 72, 0.5",
+                    "rgba(237, 223, 185, 0.5",
+                    "rgba(237, 199, 121, 0.5",
+                    "rgba(215, 127, 110, 0.5",
+                    "rgba(115, 165, 152, 0.5",
+                    "rgba(169, 188, 139, 0.5",
+                    "rgba(237, 234, 215, 0.5",
+                    "rgba(232, 194, 192, 0.5",
+                    "rgba(147, 136, 140, 0.5",
+                    "rgba(51, 52, 57, 0.5",
+                    "rgba(72, 94, 108, 0.5"
                 ], //그래프의 색 및 비춰지는 정도
                 borderColor : 
                 [
-                    "rgba(39, 80, 76, 0.7",
-                    "rgba(40, 12, 80, 0.7",
-                    "rgba(25, 30, 90, 0.7",
-                    "rgba(10, 90, 20, 0.7",
-                    "rgba(80, 50, 30, 0.7",
-                    "rgba(70, 80, 40, 0.7",
-                    "rgba(39, 80, 76, 0.7",
-                    "rgba(40, 12, 80, 0.7",
-                    "rgba(25, 30, 90, 0.7"
+                    "rgba(230, 212, 18, 0.7",
+                    "rgba(93, 201, 188, 0.7",
+                    "rgba(38, 148, 137, 0.7",
+                    "rgba(198, 58, 68, 0.7",
+                    "rgba(246, 113, 72, 0.7",
+                    "rgba(237, 223, 185, 0.7",
+                    "rgba(237, 199, 121, 0.7",
+                    "rgba(215, 127, 110, 0.7",
+                    "rgba(115, 165, 152, 0.7",
+                    "rgba(169, 188, 139, 0.7",
+                    "rgba(237, 234, 215, 0.7",
+                    "rgba(232, 194, 192, 0.7",
+                    "rgba(147, 136, 140, 0.7",
+                    "rgba(51, 52, 57, 0.7",
+                    "rgba(72, 94, 108, 0.7"
                 ], //그래프 주변 선의 색깔
                 hoverBackgroundColor : 
                 [
-                    "rgba(39, 80, 76, 0.7",
-                    "rgba(40, 12, 80, 0.7",
-                    "rgba(25, 30, 90, 0.7",
-                    "rgba(10, 90, 20, 0.7",
-                    "rgba(80, 50, 30, 0.7",
-                    "rgba(70, 80, 40, 0.7",
-                    "rgba(39, 80, 76, 0.7",
-                    "rgba(40, 12, 80, 0.7",
-                    "rgba(25, 30, 90, 0.7"
+                    "rgba(230, 212, 18, 0.7",
+                    "rgba(93, 201, 188, 0.7",
+                    "rgba(38, 148, 137, 0.7",
+                    "rgba(198, 58, 68, 0.7",
+                    "rgba(246, 113, 72, 0.7",
+                    "rgba(237, 223, 185, 0.7",
+                    "rgba(237, 199, 121, 0.7",
+                    "rgba(215, 127, 110, 0.7",
+                    "rgba(115, 165, 152, 0.7",
+                    "rgba(169, 188, 139, 0.7",
+                    "rgba(237, 234, 215, 0.7",
+                    "rgba(232, 194, 192, 0.7",
+                    "rgba(147, 136, 140, 0.7",
+                    "rgba(51, 52, 57, 0.7",
+                    "rgba(72, 94, 108, 0.7"
                 ],
     
                 borderWidth : 0, //테두리 선 크기 
@@ -104,15 +122,21 @@ document.addEventListener('DOMContentLoaded', function () {
     var pieData = [4,8,12,16,20,24,2,14];
     
     var pieColors = [
-        "rgba(39, 80, 76, 0.5",
-        "rgba(40, 12, 80, 0.5",
-        "rgba(25, 30, 90, 0.5",
-        "rgba(10, 90, 20, 0.5",
-        "rgba(80, 50, 30, 0.5",
-        "rgba(70, 80, 40, 0.5",
-        "rgba(39, 80, 76, 0.5",
-        "rgba(40, 12, 80, 0.5",
-        "rgba(25, 30, 90, 0.5"
+        "rgba(230, 212, 18, 0.5",
+        "rgba(93, 201, 188, 0.5",
+        "rgba(38, 148, 137, 0.5",
+        "rgba(198, 58, 68, 0.5",
+        "rgba(246, 113, 72, 0.5",
+        "rgba(237, 223, 185, 0.5",
+        "rgba(237, 199, 121, 0.5",
+        "rgba(215, 127, 110, 0.5",
+        "rgba(115, 165, 152, 0.5",
+        "rgba(169, 188, 139, 0.5",
+        "rgba(237, 234, 215, 0.5",
+        "rgba(232, 194, 192, 0.5",
+        "rgba(147, 136, 140, 0.5",
+        "rgba(51, 52, 57, 0.5",
+        "rgba(72, 94, 108, 0.5"
     ];
     var hi=['a','b','c']
     var ho=[1,95,0]
@@ -128,34 +152,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 backgroundColor : pieColors, 
                 borderColor : 
                 [
-                    "rgba(39, 80, 76, 0.7",
-                    "rgba(40, 12, 80, 0.7",
-                    "rgba(25, 30, 90, 0.7",
-                    "rgba(10, 90, 20, 0.7",
-                    "rgba(80, 50, 30, 0.7",
-                    "rgba(70, 80, 40, 0.7",
-                    "rgba(39, 80, 76, 0.7",
-                    "rgba(40, 12, 80, 0.7",
-                    "rgba(25, 30, 90, 0.7",
-                    "rgba(10, 90, 20, 0.7",
-                    "rgba(80, 50, 30, 0.7",
-                    "rgba(70, 80, 40, 0.7",
+                    "rgba(230, 212, 18, 0.7",
+                    "rgba(93, 201, 188, 0.7",
+                    "rgba(38, 148, 137, 0.7",
+                    "rgba(198, 58, 68, 0.7",
+                    "rgba(246, 113, 72, 0.7",
+                    "rgba(237, 223, 185, 0.7",
+                    "rgba(237, 199, 121, 0.7",
+                    "rgba(215, 127, 110, 0.7",
+                    "rgba(115, 165, 152, 0.7",
+                    "rgba(169, 188, 139, 0.7",
+                    "rgba(237, 234, 215, 0.7",
+                    "rgba(232, 194, 192, 0.7",
+                    "rgba(147, 136, 140, 0.7",
+                    "rgba(51, 52, 57, 0.7",
+                    "rgba(72, 94, 108, 0.7",
                     
                 ], //그래프 주변 선의 색깔
                 hoverBackgroundColor : 
                 [
-                    "rgba(39, 80, 76, 0.7",
-                    "rgba(40, 12, 80, 0.7",
-                    "rgba(25, 30, 90, 0.7",
-                    "rgba(10, 90, 20, 0.7",
-                    "rgba(80, 50, 30, 0.7",
-                    "rgba(70, 80, 40, 0.7",
-                    "rgba(39, 80, 76, 0.7",
-                    "rgba(40, 12, 80, 0.7",
-                    "rgba(25, 30, 90, 0.7",
-                    "rgba(10, 90, 20, 0.7",
-                    "rgba(80, 50, 30, 0.7",
-                    "rgba(70, 80, 40, 0.7",
+                    "rgba(230, 212, 18, 0.7",
+                    "rgba(93, 201, 188, 0.7",
+                    "rgba(38, 148, 137, 0.7",
+                    "rgba(198, 58, 68, 0.7",
+                    "rgba(246, 113, 72, 0.7",
+                    "rgba(237, 223, 185, 0.7",
+                    "rgba(237, 199, 121, 0.7",
+                    "rgba(215, 127, 110, 0.7",
+                    "rgba(115, 165, 152, 0.7",
+                    "rgba(169, 188, 139, 0.7",
+                    "rgba(237, 234, 215, 0.7",
+                    "rgba(232, 194, 192, 0.7",
+                    "rgba(147, 136, 140, 0.7",
+                    "rgba(51, 52, 57, 0.7",
+                    "rgba(72, 94, 108, 0.7",
                 ],
     
                 borderWidth : 0.2, //테두리 선 크기 
@@ -170,6 +200,116 @@ document.addEventListener('DOMContentLoaded', function () {
             
         }
     });
+
+
+    
+    
+// var lastchart = $('<table><tr><td>Name</td></tr></table>')+('<table><tr><td>value</td></tr></table>')+
+// ('<table><tr><td>Name</td></tr></table>');
+// lastchart.show();
+var row01 = [];
+var data00 = [] ;
+var data01 = [] ;
+var data03 = [] ;
+var data02 = [] ;
+
+const table = document.createElement('table');
+const thead = document.createElement('thead');
+const tbody = document.createElement('tbody');
+
+table.appendChild(thead);
+table.appendChild(tbody);
+
+// Adding the entire table to the body tag
+document.getElementById('somebody').appendChild(table);
+
+// Creating and adding data to first row of the table
+const row_1 = document.createElement('tr');
+const heading_0 = document.createElement('th');
+heading_0.innerHTML = '순번';
+const heading_1 = document.createElement('th');
+heading_1.innerHTML = '업무 이름';
+const heading_2 = document.createElement('th');
+heading_2.innerHTML = '전체 시간';
+const heading_3 = document.createElement('th');
+heading_3.innerHTML = '진행 시간';
+
+row_1.appendChild(heading_0);
+row_1.appendChild(heading_1);
+row_1.appendChild(heading_2);
+row_1.appendChild(heading_3);
+thead.appendChild(row_1);
+
+for(var i=0;i<val.length;i++)
+{
+    var short = Math.round((val[i].ttime)/60);
+    var promise = Math.round((val[i].ctime)/60);
+    row01[i] = document.createElement('tr');
+    data00[i] = document.createElement('td');
+    data00[i].innerHTML = (i+1);
+    data01[i] = document.createElement('td');
+    data01[i].innerHTML = val[i].title;
+    data02[i] = document.createElement('td');
+    data02[i].innerHTML = short;
+    data03[i] = document.createElement('td');
+    data03[i].innerHTML = promise;
+
+    row01[i].appendChild(data00[i]);
+    row01[i].appendChild(data01[i]);
+    row01[i].appendChild(data02[i]);
+    row01[i].appendChild(data03[i]);
+    tbody.appendChild(row01[i]);
+
+}
+
+
+// // Creating and adding data to second row of the table
+// const row_2 = document.createElement('tr');
+// const data_1 = document.createElement('td');
+// data_1.innerHTML = '1.';
+// const data_2 = document.createElement('td');
+// data_2.innerHTML = 'James Clerk';
+// const data_3 = document.createElement('td');
+// data_3.innerHTML = 'Netflix';
+
+// row_2.appendChild(data_1);
+// row_2.appendChild(data_2);
+// row_2.appendChild(data_3);
+// tbody.appendChild(row_2);
+
+
+// // Creating and adding data to third row of the table
+// const row_3 = document.createElement('tr');
+// const row_3_data_1 = document.createElement('td');
+// row_3_data_1.innerHTML = "2.";
+// const row_3_data_2 = document.createElement('td');
+// row_3_data_2.innerHTML = "Adam White";
+// const row_3_data_3 = document.createElement('td');
+// row_3_data_3.innerHTML = "Microsoft";
+
+// row_3.appendChild(row_3_data_1);
+// row_3.appendChild(row_3_data_2);
+// row_3.appendChild(row_3_data_3);
+// tbody.appendChild(row_3);
+
+// const row_4 = document.createElement('tr');
+// const row_4_data_1 = document.createElement('td');
+// row_4_data_1.innerHTML = "2.";
+// const row_4_data_2 = document.createElement('td');
+// row_4_data_2.innerHTML = "Adam White";
+// const row_4_data_3 = document.createElement('td');
+// row_4_data_3.innerHTML = "Microsoft";
+
+// row_4.appendChild(row_4_data_1);
+// row_4.appendChild(row_4_data_2);
+// row_4.appendChild(row_4_data_3);
+// tbody.appendChild(row_4);
+
+
+
+
+
+
 
 
   });

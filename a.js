@@ -230,9 +230,9 @@ heading_0.innerHTML = '순번';
 const heading_1 = document.createElement('th');
 heading_1.innerHTML = '업무 이름';
 const heading_2 = document.createElement('th');
-heading_2.innerHTML = '전체 시간';
+heading_2.innerHTML = '전체 시간(분)';
 const heading_3 = document.createElement('th');
-heading_3.innerHTML = '진행 시간';
+heading_3.innerHTML = '진행 시간(분)';
 
 row_1.appendChild(heading_0);
 row_1.appendChild(heading_1);

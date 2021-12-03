@@ -273,7 +273,7 @@ function UpdateCT(url){
         });
 
         $('#editlink').click(function (event) {
-          if(schedule[idx].url=="")
+          if(schedule[idx].url=="")//program
           {
             pedit.show();
           //edit.val(anchor.text());
@@ -293,13 +293,13 @@ function UpdateCT(url){
                 edit1.hide();
                 var obj1 = new Object();
                 obj1.title = $('#title11').val();
-                obj1.url=""
-                obj1.ttime=$('#totime11').val()*60;
+                  obj1.ttime=$('#totime11').val()*60;
+                  obj1.url=""
+                
                 obj1.ctime=schedule[idx].ctime;
                 schedule[idx]=obj1;
                 console.log(schedule);
                 //anchor.text(edit.val());
-                options.show();
                 $(this).dialog('destroy');
                 window.AddSch();
                 localStorage.setItem('sch',JSON.stringify(schedule));
@@ -331,12 +331,12 @@ function UpdateCT(url){
                 var obj1 = new Object();
                 obj1.title = $('#title1').val();
                 obj1.url=$('#url1').val();
-                obj1.ttime=$('#expectedtime1').val();
+                obj1.ttime=schedule[idx].ttime;
                 obj1.ctime=schedule[idx].ctime;
                 schedule[idx]=obj1;
                 console.log(schedule);
                 //anchor.text(edit.val());
-                options.show();
+
                 $(this).dialog('destroy');
                 window.AddSch();
                 localStorage.setItem('sch',JSON.stringify(schedule));

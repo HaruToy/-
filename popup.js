@@ -204,7 +204,12 @@ function UpdateCT(url){
       var span = $('<div class = "box_02">');
       var what=$('<button id="sch" class = "work_num_01">' +sch.title+ '</button>');
       var curper=$('<span class=per>'+ Math.round((schedule[idx].ctime/schedule[idx].ttime)*100)+' %</span>');
-      var whattime=$('<span class=time>0h 0m 0s</span>');
+      var ct=Math.floor(schedule[idx].ctime/3600);
+      var h=ct;
+      ct=schedule[idx].ctime%3600;
+      var m=Math.floor(ct/60);
+      var s=ct%60;
+      var whattime=$('<span class=time>'+h+'h '+m+'m '+s+'s'+'</span>');
       span.append(what);
       if(schedule[idx].url=="")
       {span.append(whattime);}
@@ -370,8 +375,10 @@ function UpdateCT(url){
                 let sec=ptime%60;
                 schedule[idx].ctime=ptime;
                 var tagName = $(this).prop('tagName');
+                window.AddSch();
+                localStorage.setItem('sch',JSON.stringify(schedule));
 
-                $(".time").text(String(hour)+'h '+String(min)+'m '+String(sec)+'s');
+                 //$(".time").eq(idx).text(String(hour)+' : '+String(min)+' : '+String(sec));
                 
                 //$(this).parent().children(".time")
                // $(this).parent().children(".time").text(String(hour)+' : '+String(min)+' : '+String(sec));

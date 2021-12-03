@@ -366,7 +366,7 @@ function UpdateCT(url){
 
             var tagName = $(this).parents('.box_02').prop('tagName');
             alert(tagName);
-            $(".time").text(String(hour)+' : '+String(min)+' : '+String(sec));
+            $(".time").text(String(hour)+'h '+String(min)+'m '+String(sec)+'s');
           },1000);
         });
 

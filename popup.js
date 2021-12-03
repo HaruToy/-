@@ -1,5 +1,7 @@
 //������ ����ҿ� ����
 schedule = []
+let timer=null;
+let ptime=null;
 var c_url;
 function Upt(){
   chrome.tabs.query({active: true, currentWindow: true}, tabs => {
@@ -350,30 +352,40 @@ function UpdateCT(url){
           }).dialog('open');
         }
         });
-        var timer;
-        let ptime;
-        $('#starttime').click(function (event){
-         
-         let sttime = new Date().getTime();
-         let sttimeInsec = Math.round(sttime / 1000);
-          timer=setInterval(function (){
-            let cttime = new Date().getTime();
-            let cttimeInsec = Math.round(cttime / 1000);
-            ptime = cttimeInsec-sttimeInsec;
-            let hour=parseInt(ptime/3600);
-            let min =parseInt((ptime%3600)/60);
-            let sec=ptime%60;
+        (function(){
+          $('#starttime').click(function (event){
+            let cnt=0;
+            cnt++;
+            let sttime = new Date().getTime();
+            let sttimeInsec = Math.round(sttime / 1000);
+            let temp=schedule[idx].ctime;
+            timer=setInterval(function (){
+                let cttime = new Date().getTime();
+                let cttimeInsec = Math.round(cttime / 1000);
+               
+                ptime=cttimeInsec-sttimeInsec+temp;
+                
+                let hour=parseInt(ptime/3600);
+                let min =parseInt((ptime%3600)/60);
+                let sec=ptime%60;
+                schedule[idx].ctime=ptime;
+                var tagName = $(this).prop('tagName');
 
-            var tagName = $(this).parents('.box_02').prop('tagName');
-            alert(tagName);
-            $(".time").text(String(hour)+'h '+String(min)+'m '+String(sec)+'s');
-          },1000);
-        });
-
-        $('#stoptime').click(function (event){
-            console.log(timer);
-            clearInterval(timer);
+                $(".time").text(String(hour)+'h '+String(min)+'m '+String(sec)+'s');
+                
+                //$(this).parent().children(".time")
+               // $(this).parent().children(".time").text(String(hour)+' : '+String(min)+' : '+String(sec));
+                //$(this).parentElement(".time").text(String(hour)+' : '+String(min)+' : '+String(sec));
+                console.log(`ptime : ${ptime}`);
+                console.log(`timer : ${timer}`);
+              },1000);
             });
+          $('#stoptime').click(function (event){
+              console.log(`timer : ${timer}`);
+              clearInterval(timer);
+              console.log(`ptimer : ${ptime}`);
+          });
+  } )()
 
         options.fadeIn();
       },

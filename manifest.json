@@ -1,6 +1,8 @@
 {
   "manifest_version": 2,
-
+  "background": {
+    "scripts": [ "background.js" ]
+ },
   "name": "해치웠나",
   "description": "My lovely words",
   "version": "1.0",

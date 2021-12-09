@@ -24,7 +24,7 @@ function UpdateCT(url){
     for(var i=0;i<schedule.length;i++){
       if(schedule[i].url==url){
         schedule[i].ttime=ttime;
-        if(schedule[i].ctime<ctime)
+        if(schedule[i].ctime<=ctime)
         {schedule[i].ctime=ctime;}
         $('.graph.stack1').empty();
         $('.graph.stack1').append(dumpGraph());
@@ -203,7 +203,13 @@ function UpdateCT(url){
   function dumpNode(sch,idx) {
       var span = $('<div class = "box_02">');
       var what=$('<button id="sch" class = "work_num_01">' +sch.title+ '</button>');
-      var curper=$('<span class=per>'+ Math.round((schedule[idx].ctime/schedule[idx].ttime)*100)+' %</span>');
+      var hiper;
+      if(schedule[idx].ttime==0){
+        hiper=0;
+      }else{
+        hiper=Math.round((schedule[idx].ctime/schedule[idx].ttime)*100);
+      }
+      var curper=$('<span class=per>'+ hiper +' %</span>');
       var ct=Math.floor(schedule[idx].ctime/3600);
       var h=ct;
       ct=schedule[idx].ctime%3600;
@@ -270,6 +276,7 @@ function UpdateCT(url){
                 schedule.splice(idx,1);
                 span.parent().remove();
                 $(this).dialog('destroy');
+                window.AddSch();
                 localStorage.setItem('sch',JSON.stringify(schedule));
               },
               Cancel: function () {
@@ -394,7 +401,6 @@ function UpdateCT(url){
           });
   } )()
 
-        options.fadeIn();
       },
   
         // unhover
@@ -413,7 +419,7 @@ function UpdateCT(url){
       what.click(function(){
         if(schedule[idx].url!=""){
           chrome.tabs.create({
-            url: schedule[idx].url});
+            url: schedule[idx].url+'&t='+String(schedule[idx].ctime)+'s'});
         }
       }).append(what);
   //+String(schedule[i].ctime)
